@@ -9,18 +9,14 @@
 /* Begin PBXBuildFile section */
 		F545A4A1215A45FA0050C4F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */; };
 		F545A4A3215A45FA0050C4F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545A4A2215A45FA0050C4F0 /* ViewController.swift */; };
-		F545A4A6215A45FA0050C4F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F545A4A4215A45FA0050C4F0 /* Main.storyboard */; };
 		F545A4A8215A45FD0050C4F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F545A4A7215A45FD0050C4F0 /* Assets.xcassets */; };
-		F545A4AB215A45FD0050C4F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F545A4A9215A45FD0050C4F0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F545A49D215A45FA0050C4F0 /* DailyAvaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyAvaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F545A4A2215A45FA0050C4F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F545A4A5215A45FA0050C4F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F545A4A7215A45FD0050C4F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F545A4AA215A45FD0050C4F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F545A4AC215A45FD0050C4F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,14 +50,20 @@
 		F545A49F215A45FA0050C4F0 /* DailyAvaz */ = {
 			isa = PBXGroup;
 			children = (
-				F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */,
-				F545A4A2215A45FA0050C4F0 /* ViewController.swift */,
-				F545A4A4215A45FA0050C4F0 /* Main.storyboard */,
-				F545A4A7215A45FD0050C4F0 /* Assets.xcassets */,
-				F545A4A9215A45FD0050C4F0 /* LaunchScreen.storyboard */,
+				F545A4B2215A4E090050C4F0 /* App */,
 				F545A4AC215A45FD0050C4F0 /* Info.plist */,
+				F545A4A7215A45FD0050C4F0 /* Assets.xcassets */,
 			);
 			path = DailyAvaz;
+			sourceTree = "<group>";
+		};
+		F545A4B2215A4E090050C4F0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */,
+				F545A4A2215A45FA0050C4F0 /* ViewController.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F545A4AB215A45FD0050C4F0 /* LaunchScreen.storyboard in Resources */,
 				F545A4A8215A45FD0050C4F0 /* Assets.xcassets in Resources */,
-				F545A4A6215A45FA0050C4F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,25 +141,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F545A4A4215A45FA0050C4F0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F545A4A5215A45FA0050C4F0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F545A4A9215A45FD0050C4F0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F545A4AA215A45FD0050C4F0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F545A4AD215A45FD0050C4F0 /* Debug */ = {
