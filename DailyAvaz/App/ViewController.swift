@@ -7,6 +7,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    override func viewDidLoad() {
+        APIManager.getNews(forCategory: .najcitanije, articleCategory: .vijesti, forPage: 1)
+            .subscribe(onNext: { articles in
+                print(articles[0])
+            }, onError: { error in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
 }
