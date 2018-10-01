@@ -52,6 +52,7 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func dataModelForRow(forIndexPath indexPath: IndexPath) -> NewsTableViewCell.DataModel {
+        
 //        let article = news[indexPath.row]
 //        let color =
 //        let dataModel = NewsTableViewCell.DataModel(image: UIImage(named: "logo_big")!,

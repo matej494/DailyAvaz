@@ -1,7 +1,10 @@
 //
-//  SnapKit
+//  Kingfisher.h
+//  Kingfisher
 //
-//  Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit
+//  Created by Wei Wang on 15/4/6.
+//
+//  Copyright (c) 2018 Wei Wang <onevcat@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,22 +24,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+#import <Foundation/Foundation.h>
 
-#if os(iOS) || os(tvOS)
-    import UIKit
-#if swift(>=4.2)
-    typealias LayoutRelation = NSLayoutConstraint.Relation
-    typealias LayoutAttribute = NSLayoutConstraint.Attribute
-#else
-    typealias LayoutRelation = NSLayoutConstraint.Relation
-    typealias LayoutAttribute = NSLayoutConstraint.Attribute
-#endif
-    typealias LayoutPriority = UILayoutPriority
-#else
-    import AppKit
-    typealias LayoutRelation = NSLayoutConstraint.Relation
-    typealias LayoutAttribute = NSLayoutConstraint.Attribute
-    typealias LayoutPriority = NSLayoutConstraint.Priority
-#endif
+//! Project version number for Kingfisher.
+FOUNDATION_EXPORT double KingfisherVersionNumber;
+
+//! Project version string for Kingfisher.
+FOUNDATION_EXPORT const unsigned char KingfisherVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <Kingfisher/PublicHeader.h>
+
 

@@ -24,6 +24,7 @@ class NewsTableViewCell: UITableViewCell {
         let shares: Int
     }
     
+    private let containerView = UIView.autolayoutView()
     private let coverImageView = UIImageView.autolayoutView()
     private let categoryDetailsStackView = UIStackView.autolayoutView()
     private let categoryDetailsStackBackgroundView = UIView.autolayoutView()
@@ -67,6 +68,7 @@ extension NewsTableViewCell {
 
 private extension NewsTableViewCell {
     func setupViews() {
+        setupContainerView()
         setupCoverImageView()
         setupCategoryDetailsStackBackgroundView()
         setupCategoryDetailsStackView()
@@ -82,10 +84,23 @@ private extension NewsTableViewCell {
         setupSharesImageView()
     }
     
+    func setupContainerView() {
+        containerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
+//        containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        containerView.layer.shadowRadius = 1
+//        containerView.layer.shadowOpacity = 1
+        containerView.layer.cornerRadius = 4
+        containerView.clipsToBounds = true
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(8)
+        }
+    }
+    
     func setupCoverImageView() {
         coverImageView.contentMode = .scaleAspectFill
         coverImageView.clipsToBounds = true
-        contentView.addSubview(coverImageView)
+        containerView.addSubview(coverImageView)
         coverImageView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
             $0.height.equalTo(217)
@@ -132,7 +147,7 @@ private extension NewsTableViewCell {
         titleTextView.font = UIFont.custom(type: RobotoSlab.bold, ofSize: 14)
         titleTextView.lineBreakMode = .byTruncatingTail
         titleTextView.numberOfLines = 2
-        contentView.addSubview(titleTextView)
+        containerView.addSubview(titleTextView)
         titleTextView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(17)
             $0.top.equalTo(coverImageView.snp.bottom).inset(-8)
@@ -143,7 +158,7 @@ private extension NewsTableViewCell {
         subtitleTextView.font = UIFont.custom(type: Lato.regular, ofSize: 13)
         subtitleTextView.lineBreakMode = .byTruncatingTail
         subtitleTextView.numberOfLines = 2
-        contentView.addSubview(subtitleTextView)
+        containerView.addSubview(subtitleTextView)
         subtitleTextView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(17)
             $0.top.equalTo(titleTextView.snp.bottom).inset(-5)
@@ -151,7 +166,7 @@ private extension NewsTableViewCell {
     }
     
     func setupDetailsView() {
-        contentView.addSubview(detailsView)
+        containerView.addSubview(detailsView)
         detailsView.snp.makeConstraints { 
             $0.leading.trailing.equalToSuperview().inset(17)
             $0.top.equalTo(subtitleTextView.snp.bottom).inset(-8)
