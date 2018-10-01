@@ -14,22 +14,22 @@ struct APINews: Codable {
 
 struct News: Codable {
     let id: Int
-    let category_id: Int
+    let categoryId: Int
     let category: String
-    let category_color: String
+    let categoryColor: String
     let url: String
-    let title_raw: String
+    let titleRaw: String
     let intro: String
     let shares: Int
-    let has_video: Bool
-    let has_gallery: Bool
-    let published_at: PublishedAt
-    let featured_image: FeaturedImage
+    let hasVideo: Bool
+    let hasGallery: Bool
+    let publishedAt: PublishedAt
+    let featuredImage: FeaturedImage
     let author: String
     
     struct PublishedAt: Codable {
         let date: String
-        let timezone_type: Int
+        let timezoneType: Int
         let timezone: String
     }
     
