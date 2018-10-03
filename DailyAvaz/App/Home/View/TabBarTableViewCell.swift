@@ -1,19 +1,25 @@
 //
-//  TabBarView.swift
+//  TabBarTableViewCell.swift
 //  DailyAvaz
 //
-//  Created by Matej Korman on 26/09/2018.
+//  Created by Matej Korman on 02/10/2018.
 //  Copyright © 2018 Matej Korman. All rights reserved.
 //
 
 import UIKit
+import SnapKit
 
-class TabBarView: UIView {
+class TabBarTableViewCell: UITableViewCell {
+    static let identifier = "TabBarTableViewCell"
+    
+    weak var delegate: TabBarDelegate?
+    
+    private let containerView = UIView.autolayoutView()
     private let firstButton = BarButton.autolayoutView()
     private let secondButton = BarButton.autolayoutView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
     }
     
@@ -22,17 +28,27 @@ class TabBarView: UIView {
     }
 }
 
-private extension TabBarView {
+private extension TabBarTableViewCell {
     func setupViews() {
+        setupContainerView()
         setupFirstButton()
         setupSecondButton()
+    }
+    
+    func setupContainerView() {
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.top.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(11)
+        }
     }
     
     func setupFirstButton() {
         firstButton.title = "Najnovije"
         firstButton.isSelected = true
         firstButton.addTarget(self, action: #selector(firstButtonTapped), for: .touchUpInside)
-        addSubview(firstButton)
+        containerView.addSubview(firstButton)
         firstButton.snp.makeConstraints { $0.leading.top.bottom.equalToSuperview() }
     }
     
@@ -40,7 +56,7 @@ private extension TabBarView {
         secondButton.title = "Najčitanije"
         secondButton.isSelected = false
         secondButton.addTarget(self, action: #selector(secondButtonTapped), for: .touchUpInside)
-        addSubview(secondButton)
+        containerView.addSubview(secondButton)
         secondButton.snp.makeConstraints {
             $0.leading.equalTo(firstButton.snp.trailing)
             $0.top.trailing.bottom.equalToSuperview()
@@ -49,20 +65,16 @@ private extension TabBarView {
     }
 }
 
-private extension TabBarView {
+private extension TabBarTableViewCell {
     @objc func firstButtonTapped() {
         firstButton.isSelected = true
         secondButton.isSelected = false
-        //TODO: Handle UI changes
-        //TODO: Call delegate for handling tap
+        delegate?.buttonTapped(atPosition: 0)
     }
     
     @objc func secondButtonTapped() {
         secondButton.isSelected = true
         firstButton.isSelected = false
-        //TODO: Handle UI changes
-        //TODO: Call delegate for handling tap
+        delegate?.buttonTapped(atPosition: 1)
     }
-    
-    
 }

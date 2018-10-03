@@ -8,12 +8,13 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class NewsTableViewCell: UITableViewCell {
     static let identifier = "NewsTableViewCell"
     
     struct DataModel {
-        let image: UIImage
+        let imageUrl: URL
         let category: String
         let categoryBackgroundColor: UIColor
         let hasGallery: Bool
@@ -51,7 +52,7 @@ class NewsTableViewCell: UITableViewCell {
 
 extension NewsTableViewCell {
     func updateView(dataModel: NewsTableViewCell.DataModel) {
-        coverImageView.image = dataModel.image
+        coverImageView.kf.setImage(with: dataModel.imageUrl)
         categoryLabel.text = dataModel.category
         categoryDetailsStackView.subviews.forEach { $0.removeFromSuperview() }
         categoryDetailsStackView.addArrangedSubview(categoryLabel)
@@ -68,6 +69,8 @@ extension NewsTableViewCell {
 
 private extension NewsTableViewCell {
     func setupViews() {
+        selectionStyle = .none
+        setupContentView()
         setupContainerView()
         setupCoverImageView()
         setupCategoryDetailsStackBackgroundView()
@@ -84,35 +87,42 @@ private extension NewsTableViewCell {
         setupSharesImageView()
     }
     
+    func setupContentView() {
+        contentView.backgroundColor = .clear
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowOpacity = 0.2
+        contentView.layer.shadowRadius = 4
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    }
+    
     func setupContainerView() {
-        containerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
-//        containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        containerView.layer.shadowRadius = 1
-//        containerView.layer.shadowOpacity = 1
-        containerView.layer.cornerRadius = 4
+        containerView.backgroundColor = .white
+        containerView.layer.masksToBounds = true
         containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = 4
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.top.bottom.equalToSuperview().inset(5)
         }
     }
     
     func setupCoverImageView() {
+        coverImageView.kf.indicatorType = .activity
         coverImageView.contentMode = .scaleAspectFill
         coverImageView.clipsToBounds = true
         containerView.addSubview(coverImageView)
         coverImageView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
-            $0.height.equalTo(217)
+            $0.height.equalTo(coverImageView.snp.width).multipliedBy(0.6)
         }
     }
     
     func setupCategoryDetailsStackBackgroundView() {
+        categoryDetailsStackBackgroundView.layer.cornerRadius = 3
         coverImageView.addSubview(categoryDetailsStackBackgroundView)
-        categoryDetailsStackBackgroundView.snp.makeConstraints {
-            $0.leading.bottom.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(178)
-        }
+        categoryDetailsStackBackgroundView.snp.makeConstraints { $0.leading.bottom.equalToSuperview().inset(16) }
     }
     
     func setupCategoryDetailsStackView() {
@@ -147,6 +157,7 @@ private extension NewsTableViewCell {
         titleTextView.font = UIFont.custom(type: RobotoSlab.bold, ofSize: 14)
         titleTextView.lineBreakMode = .byTruncatingTail
         titleTextView.numberOfLines = 2
+        titleTextView.setContentHuggingPriority(.required, for: .vertical)
         containerView.addSubview(titleTextView)
         titleTextView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(17)
@@ -158,6 +169,7 @@ private extension NewsTableViewCell {
         subtitleTextView.font = UIFont.custom(type: Lato.regular, ofSize: 13)
         subtitleTextView.lineBreakMode = .byTruncatingTail
         subtitleTextView.numberOfLines = 2
+        subtitleTextView.setContentHuggingPriority(.required, for: .vertical)
         containerView.addSubview(subtitleTextView)
         subtitleTextView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(17)

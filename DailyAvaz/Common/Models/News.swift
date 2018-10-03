@@ -28,7 +28,7 @@ struct News: Codable {
     let author: String
     
     struct PublishedAt: Codable {
-        let date: String
+        let date: Date
         let timezoneType: Int
         let timezone: String
     }

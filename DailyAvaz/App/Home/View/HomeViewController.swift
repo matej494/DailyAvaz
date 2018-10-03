@@ -14,13 +14,7 @@ class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: HomeViewModel
     private let homeView = HomeView.autolayoutView()
-    private var image: UIImage?
-    
-    enum State {
-        case loading
-        case dataReady
-        case error
-    }
+    private var refreshControll = UIRefreshControl()
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -29,13 +23,6 @@ class HomeViewController: UIViewController {
         setupHomeView()
         setupObservers()
         viewModel.initializeData().disposed(by: disposeBag)
-        
-        APIManager.getCoverImage(with: "https://avaz.ba/media/2018/09/26/716281/press-sbb-5.jpg", success: { data in
-            self.image = UIImage(data: data)
-            self.homeView.tableView.reloadData()
-        }, failure: { error in
-            print(error.localizedDescription)
-        })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,28 +36,59 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell else {
-            return UITableViewCell()
+        let dataModel = viewModel.dataModelForRow(forIndexPath: indexPath)
+        switch dataModel {
+        case .news(let data):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell,
+                let dataModel = data else {
+                    return UITableViewCell()
+            }
+            cell.updateView(dataModel: dataModel)
+            return cell
+        case .loader:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: LoaderTableViewCell.identifier, for: indexPath) as? LoaderTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.startAnimating()
+            return cell
+        case .tabBar:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TabBarTableViewCell.identifier, for: indexPath) as? TabBarTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.delegate = self
+            return cell
         }
-        let dataModel = NewsTableViewCell.DataModel(image: image ?? UIImage(named: "logo_big")!,
-                                                    category: "Vijesti",
-                                                    categoryBackgroundColor: .avazRed,
-                                                    hasGallery: true,
-                                                    hasVideo: true,
-                                                    title: "Title",
-                                                    subtitle: "Subtitle",
-                                                    timeSinceRelease: "Prije 5 min",
-                                                    shares: 1)
-        cell.updateView(dataModel: dataModel)
-        return cell
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let indexPath = IndexPath(row: viewModel.numberOfRows() - 3, section: 0)
+        guard let newVisableCell = homeView.tableView.visibleCells.last,
+            let cell = homeView.tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        if newVisableCell.contains(cell) {
+            viewModel.nextPage()
+        }
+    }
+}
+
+extension HomeViewController: TabBarDelegate {
+    func buttonTapped(atPosition position: Int) {
+        if position == 0 {
+            viewModel.changeAPICategory(.najnovije)
+        } else {
+            viewModel.changeAPICategory(.najcitanije)
+        }
     }
 }
 
@@ -82,6 +100,9 @@ private extension HomeViewController {
     
     func setupHomeView() {
         homeView.tableView.dataSource = self
+        homeView.tableView.delegate = self
+        homeView.tableView.addSubview(refreshControll)
+        homeView.tableView.scrollsToTop = true
         view.addSubview(homeView)
         homeView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
@@ -95,15 +116,35 @@ private extension HomeViewController {
     }
     
     func setupObservers() {
-        viewModel.stateChanged
+        viewModel.dataState
             .subscribe(onNext: { [unowned self] viewControllerState in
                 self.stateChanged(state: viewControllerState)
             })
             .disposed(by: disposeBag)
+        refreshControll.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
-    func stateChanged(state: State) {
-        // Reload view
-        print(state)
+    func stateChanged(state: HomeViewDataState) {
+        switch state {
+        case .initialized:
+            homeView.tableView.reloadData()
+        case .readyPaged(let indexPathsToRemove, let indexPathsToInsert):
+            homeView.tableView.performBatchUpdates({
+                homeView.tableView.deleteRows(at: indexPathsToRemove, with: .none)
+                homeView.tableView.insertRows(at: indexPathsToInsert, with: .none)
+            }, completion: nil)
+        case .readyRefreshed:
+            homeView.tableView.reloadData()
+            refreshControll.endRefreshing()
+            homeView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        case .loading:
+            homeView.tableView.reloadData()
+        case .error:
+            break
+        }
+    }
+    
+    @objc func refreshData() {
+        viewModel.refreshData()
     }
 }

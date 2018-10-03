@@ -55,8 +55,14 @@
 		F52C70E42161F3CC006805AE /* Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70E32161F3CC006805AE /* Roboto.swift */; };
 		F52C70E72161F63A006805AE /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70E62161F63A006805AE /* CustomFont.swift */; };
 		F52C70E92161F92D006805AE /* Lato.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70E82161F92D006805AE /* Lato.swift */; };
+		F535748521633CC70045D969 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535748421633CC70045D969 /* LoaderTableViewCell.swift */; };
+		F5357488216355900045D969 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5357487216355900045D969 /* TabBarDelegate.swift */; };
 		F545A4A1215A45FA0050C4F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */; };
 		F545A4A8215A45FD0050C4F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F545A4A7215A45FD0050C4F0 /* Assets.xcassets */; };
+		F5C3EAB9216362AE00DB6B3F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3EAB8216362AE00DB6B3F /* DateConverter.swift */; };
+		F5C3EABB2163826300DB6B3F /* TabBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3EABA2163826300DB6B3F /* TabBarTableViewCell.swift */; };
+		F5E456692164D7FB00408432 /* HomeViewCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E456682164D7FB00408432 /* HomeViewCellType.swift */; };
+		F5E4566B2164D81B00408432 /* HomeViewDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4566A2164D81B00408432 /* HomeViewDataState.swift */; };
 		F5F3BD4B215A53F20073AC73 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3BD4A215A53F20073AC73 /* APIManager.swift */; };
 		F5F3BD4E215A54F90073AC73 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3BD4D215A54F90073AC73 /* News.swift */; };
 		F5FCEE6F215B7F5D00079A09 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE6E215B7F5D00079A09 /* Categories.swift */; };
@@ -69,7 +75,6 @@
 		F5FCEE81215B878500079A09 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE80215B878500079A09 /* HomeViewModel.swift */; };
 		F5FCEE83215BAA1B00079A09 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE82215BAA1B00079A09 /* HomeView.swift */; };
 		F5FCEE86215BAA4C00079A09 /* UIView-DailyAvaz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE85215BAA4C00079A09 /* UIView-DailyAvaz.swift */; };
-		F5FCEE88215BC00F00079A09 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE87215BC00F00079A09 /* TabBarView.swift */; };
 		F5FCEE8A215CA14B00079A09 /* UIColor-DailyAvaz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE89215CA14B00079A09 /* UIColor-DailyAvaz.swift */; };
 		F5FCEE8C215CA83300079A09 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE8B215CA83300079A09 /* BarButton.swift */; };
 		F5FCEE8E215CD59400079A09 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCEE8D215CD59400079A09 /* NewsTableViewCell.swift */; };
@@ -128,10 +133,16 @@
 		F52C70E32161F3CC006805AE /* Roboto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roboto.swift; sourceTree = "<group>"; };
 		F52C70E62161F63A006805AE /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		F52C70E82161F92D006805AE /* Lato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lato.swift; sourceTree = "<group>"; };
+		F535748421633CC70045D969 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
+		F5357487216355900045D969 /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
 		F545A49D215A45FA0050C4F0 /* DailyAvaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyAvaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F545A4A7215A45FD0050C4F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F545A4AC215A45FD0050C4F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5C3EAB8216362AE00DB6B3F /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		F5C3EABA2163826300DB6B3F /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
+		F5E456682164D7FB00408432 /* HomeViewCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellType.swift; sourceTree = "<group>"; };
+		F5E4566A2164D81B00408432 /* HomeViewDataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDataState.swift; sourceTree = "<group>"; };
 		F5F3BD4A215A53F20073AC73 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F5F3BD4D215A54F90073AC73 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F5FCEE6E215B7F5D00079A09 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -144,7 +155,6 @@
 		F5FCEE80215B878500079A09 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F5FCEE82215BAA1B00079A09 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F5FCEE85215BAA4C00079A09 /* UIView-DailyAvaz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-DailyAvaz.swift"; sourceTree = "<group>"; };
-		F5FCEE87215BC00F00079A09 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F5FCEE89215CA14B00079A09 /* UIColor-DailyAvaz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-DailyAvaz.swift"; sourceTree = "<group>"; };
 		F5FCEE8B215CA83300079A09 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
 		F5FCEE8D215CD59400079A09 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -265,6 +275,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		F5357486216355690045D969 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F5357487216355900045D969 /* TabBarDelegate.swift */,
+				F5E456682164D7FB00408432 /* HomeViewCellType.swift */,
+				F5E4566A2164D81B00408432 /* HomeViewDataState.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F545A494215A45FA0050C4F0 = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +358,7 @@
 				F5FCEE6E215B7F5D00079A09 /* Categories.swift */,
 				F5FCEE71215B854E00079A09 /* Coordinator.swift */,
 				F5FCEE72215B854E00079A09 /* CoordinatorDelegate.swift */,
+				F5C3EAB8216362AE00DB6B3F /* DateConverter.swift */,
 				F52C70EA2161F973006805AE /* Fonts */,
 			);
 			path = Utilities;
@@ -346,6 +367,7 @@
 		F5FCEE70215B84B000079A09 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F5357486216355690045D969 /* Utilities */,
 				F5FCEE78215B85C600079A09 /* Coordinator */,
 				F5FCEE77215B85A900079A09 /* View */,
 				F5FCEE79215B85D000079A09 /* ViewModel */,
@@ -358,9 +380,10 @@
 			children = (
 				F5FCEE7C215B86D000079A09 /* HomeViewController.swift */,
 				F5FCEE82215BAA1B00079A09 /* HomeView.swift */,
-				F5FCEE87215BC00F00079A09 /* TabBarView.swift */,
 				F5FCEE8B215CA83300079A09 /* BarButton.swift */,
+				F5C3EABA2163826300DB6B3F /* TabBarTableViewCell.swift */,
 				F5FCEE8D215CD59400079A09 /* NewsTableViewCell.swift */,
+				F535748421633CC70045D969 /* LoaderTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -404,6 +427,7 @@
 				F545A49A215A45FA0050C4F0 /* Frameworks */,
 				F545A49B215A45FA0050C4F0 /* Resources */,
 				64E0710D2CBD987D02F868EA /* [CP] Embed Pods Frameworks */,
+				F53574832162347E0045D969 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -545,6 +569,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F53574832162347E0045D969 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -556,23 +597,28 @@
 				F52C70E42161F3CC006805AE /* Roboto.swift in Sources */,
 				F5F3BD4B215A53F20073AC73 /* APIManager.swift in Sources */,
 				F5FCEE81215B878500079A09 /* HomeViewModel.swift in Sources */,
-				F5FCEE88215BC00F00079A09 /* TabBarView.swift in Sources */,
 				F52C70E22161EFE0006805AE /* RobotoSlab.swift in Sources */,
 				F5FCEE7B215B85EE00079A09 /* HomeCoordinator.swift in Sources */,
 				F52C70E02161EDE2006805AE /* UIFont-DailyAvaz.swift in Sources */,
+				F5E4566B2164D81B00408432 /* HomeViewDataState.swift in Sources */,
 				F5FCEE8A215CA14B00079A09 /* UIColor-DailyAvaz.swift in Sources */,
 				F5FCEE74215B854F00079A09 /* CoordinatorDelegate.swift in Sources */,
 				F5FCEE7F215B874200079A09 /* HomeViewModelImpl.swift in Sources */,
 				F5FCEE73215B854F00079A09 /* Coordinator.swift in Sources */,
 				F5FCEE86215BAA4C00079A09 /* UIView-DailyAvaz.swift in Sources */,
 				F5FCEE7D215B86D000079A09 /* HomeViewController.swift in Sources */,
+				F5C3EAB9216362AE00DB6B3F /* DateConverter.swift in Sources */,
+				F5C3EABB2163826300DB6B3F /* TabBarTableViewCell.swift in Sources */,
 				F5FCEE76215B856E00079A09 /* AppCoordinator.swift in Sources */,
+				F535748521633CC70045D969 /* LoaderTableViewCell.swift in Sources */,
 				F52C70E92161F92D006805AE /* Lato.swift in Sources */,
 				F5FCEE8C215CA83300079A09 /* BarButton.swift in Sources */,
 				F5FCEE6F215B7F5D00079A09 /* Categories.swift in Sources */,
 				F5FCEE83215BAA1B00079A09 /* HomeView.swift in Sources */,
+				F5E456692164D7FB00408432 /* HomeViewCellType.swift in Sources */,
 				F5FCEE8E215CD59400079A09 /* NewsTableViewCell.swift in Sources */,
 				F5F3BD4E215A54F90073AC73 /* News.swift in Sources */,
+				F5357488216355900045D969 /* TabBarDelegate.swift in Sources */,
 				F545A4A1215A45FA0050C4F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,7 +750,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = DailyAvaz/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.DailyAvaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -720,7 +769,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = DailyAvaz/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.DailyAvaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -11,7 +11,6 @@ import SnapKit
 
 class HomeView: UIView {
     let tableView = UITableView.autolayoutView()
-    private let tabBar = TabBarView.autolayoutView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,25 +24,16 @@ class HomeView: UIView {
 
 private extension HomeView {
     func setupViews() {
-        setupTabBar()
         setupTableView()
     }
     
-    func setupTabBar() {
-        addSubview(tabBar)
-        tabBar.snp.makeConstraints {
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(24)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(15)
-            $0.height.equalTo(37)
-        }
-    }
-    
     func setupTableView() {
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(TabBarTableViewCell.self, forCellReuseIdentifier: TabBarTableViewCell.identifier)
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
+        tableView.register(LoaderTableViewCell.self, forCellReuseIdentifier: LoaderTableViewCell.identifier)
         addSubview(tableView)
-        tableView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(tabBar.snp.bottom).inset(-16)
-        }
+        tableView.snp.makeConstraints { $0.leading.top.trailing.bottom.equalTo(safeAreaLayoutGuide) }
     }
 }

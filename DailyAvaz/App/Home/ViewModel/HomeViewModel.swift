@@ -8,14 +8,16 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol HomeViewModel {
-    var stateChanged: PublishSubject<HomeViewController.State> { get }
+    var dataState: BehaviorRelay<HomeViewDataState> { get }
     
     func initializeData() -> Disposable
+    func refreshData()
     func nextPage()
     func changeAPICategory(_ apiCategory: APICategory)
     func numberOfSections() -> Int
-    func numberOfRowsInSection(forIndexPath indexPath: IndexPath) -> Int
-    func dataModelForRow(forIndexPath indexPath: IndexPath) -> NewsTableViewCell.DataModel
+    func numberOfRows() -> Int
+    func dataModelForRow(forIndexPath indexPath: IndexPath) -> HomeViewCellType
 }

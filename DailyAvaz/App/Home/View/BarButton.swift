@@ -41,7 +41,6 @@ class BarButton: UIButton {
 
 private extension BarButton {
     func setupView() {
-        //TODO: Set font
         backgroundColor = .white
         setTitleColor(.black, for: .selected)
         setTitleColor(.avazGray, for: .normal)

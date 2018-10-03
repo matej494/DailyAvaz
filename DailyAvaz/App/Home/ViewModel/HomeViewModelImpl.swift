@@ -11,34 +11,53 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModelImpl: HomeViewModel {
-    var stateChanged = PublishSubject<HomeViewController.State>()
+    var dataState = BehaviorRelay(value: HomeViewDataState.loading)
     
     private let apiCategoryChanged = BehaviorRelay(value: APICategory.najnovije)
     private var page = BehaviorRelay(value: 1)
-    private var news = [News]()
+    private var dataModels = [HomeViewCellType]()
 
     func initializeData() -> Disposable {
+        initializeDataModels()
         return Observable.zip(apiCategoryChanged, page, resultSelector: { ($0, $1) })
             .flatMap({ [unowned self] category, page -> Observable<[News]> in
-                self.stateChanged.onNext(.loading)
+                self.dataModels.append(HomeViewCellType.loader)
+                self.dataState.accept(.loading)
                 return APIManager.getNews(forCategory: category, articleCategory: .vijesti, forPage: page)
             })
             .subscribe(onNext: { [unowned self] news in
-                self.news = self.page.value == 1 ? news : self.news + news
-                self.stateChanged.onNext(.dataReady)
-                print(self.news.count)
+                self.dataModels.removeAll(where: { $0 == .loader })
+                if self.page.value == 1 {
+                    self.reloadNews(news)
+                    self.dataState.accept(.readyRefreshed)
+                } else {
+                    let indexPathsToRemove = self.createIndexPaths(startIndex: self.dataModels.count, numberOfElements: 1)
+                    let indexPathsToInsert = self.createIndexPaths(startIndex: self.dataModels.count, numberOfElements: news.count)
+                    self.insertNews(news)
+                    self.dataState.accept(.readyPaged(indexPathsToRemove: indexPathsToRemove,
+                                                      indexPathsToInsert: indexPathsToInsert))
+                }
                 }, onError: { error in
                     print(error.localizedDescription)
-                    self.stateChanged.onNext(.error)
+                    self.dataState.accept(.error)
             })
     }
     
+    func refreshData() {
+        if dataState.value == .loading { return }
+        page.accept(1)
+        apiCategoryChanged.accept(apiCategoryChanged.value)
+    }
+    
     func nextPage() {
+        if dataState.value == .loading { return }
         page.accept(page.value + 1)
         apiCategoryChanged.accept(apiCategoryChanged.value)
     }
     
     func changeAPICategory(_ apiCategory: APICategory) {
+        if dataState.value == .loading { return }
+        dataModels.removeAll(where: { $0 == .news(nil) })
         page.accept(1)
         apiCategoryChanged.accept(apiCategory)
     }
@@ -47,32 +66,53 @@ class HomeViewModelImpl: HomeViewModel {
         return 1
     }
     
-    func numberOfRowsInSection(forIndexPath indexPath: IndexPath) -> Int {
-        return news.count
+    func numberOfRows() -> Int {
+        return dataModels.count
     }
     
-    func dataModelForRow(forIndexPath indexPath: IndexPath) -> NewsTableViewCell.DataModel {
-        
-//        let article = news[indexPath.row]
-//        let color =
-//        let dataModel = NewsTableViewCell.DataModel(image: UIImage(named: "logo_big")!,
-//                                                    category: article.category,
-//                                                    categoryBackgroundColor: ,
-//                                                    hasGallery: true,
-//                                                    hasVideo: true,
-//                                                    title: "Title",
-//                                                    subtitle: "Subtitle",
-//                                                    timeSinceRelease: "Prije 5 min",
-//                                                    shares: 1)
-        
-        return NewsTableViewCell.DataModel(image: UIImage(named: "logo_big")!,
-                                           category: "Vijesti",
-                                           categoryBackgroundColor: .avazRed,
-                                           hasGallery: true,
-                                           hasVideo: true,
-                                           title: "Title",
-                                           subtitle: "Subtitle",
-                                           timeSinceRelease: "Prije 5 min",
-                                           shares: 1)
+    func dataModelForRow(forIndexPath indexPath: IndexPath) -> HomeViewCellType {
+        return dataModels[indexPath.row]
+    }
+}
+
+private extension HomeViewModelImpl {
+    private func initializeDataModels() {
+        let dataModel = HomeViewCellType.tabBar
+        dataModels.append(dataModel)
+        dataState.accept(.initialized)
+    }
+    
+    func insertNews(_ news: [News]) {
+        news.forEach { article in
+            guard let imageUrl = URL(string: "https://avaz.ba")?.appendingPathComponent(article.featuredImage.original),
+                let categoryColour = UIColor(hexString: article.categoryColor) else {
+                    return
+            }
+            let timeSinceRelease = DateConverter(date: article.publishedAt.date).message
+            let cellDataModel = NewsTableViewCell.DataModel(imageUrl: imageUrl,
+                                                            category: article.category,
+                                                            categoryBackgroundColor: categoryColour,
+                                                            hasGallery: true,
+                                                            hasVideo: true,
+                                                            title: article.titleRaw,
+                                                            subtitle: article.intro,
+                                                            timeSinceRelease: timeSinceRelease,
+                                                            shares: 1)
+            let dataModel = HomeViewCellType.news(cellDataModel)
+            dataModels.append(dataModel)
+        }
+    }
+    
+    func reloadNews(_ news: [News]) {
+        dataModels.removeAll(where: { $0 == .news(nil) })
+        insertNews(news)
+    }
+    
+    func createIndexPaths(startIndex: Int, numberOfElements: Int) -> [IndexPath] {
+        var indexPaths = [IndexPath]()
+        for i in startIndex...startIndex + numberOfElements - 1 {
+            indexPaths.append(IndexPath(row: i, section: 0))
+        }
+        return indexPaths
     }
 }

@@ -49,6 +49,9 @@ struct APIManager {
                             return emitter.onError(NetworkManagerError.dataUnwrappingFailure)
                         }
                         let decoder = JSONDecoder()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.000000"
+                        decoder.dateDecodingStrategy = .formatted(dateFormatter)
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         let news = try decoder.decode(APINews.self, from: data)
                         emitter.onNext(news.articles)
@@ -61,25 +64,5 @@ struct APIManager {
                 request.cancel()
             })
         })
-    }
-    
-    static func getCoverImage(with url: String, success: @escaping (Data) -> Void, failure: @escaping (Error) -> Void) {
-        guard let url = URL(string: url) else {
-            DispatchQueue.main.async { failure(NetworkManagerError.urlCreationFailure) }
-            return
-        }
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let responseError = error {
-                DispatchQueue.main.async { failure(responseError) }
-                return
-            }
-            
-            if let responseData = data {
-                DispatchQueue.main.async { success(responseData) }
-            } else {
-                DispatchQueue.main.async { failure(NetworkManagerError.parsingDataFailure) }
-            }
-        }
-        dataTask.resume()
     }
 }
