@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol HomeViewModel {
+    var homeCoordinatorDelegate: HomeCoordinatorDelegate? { get set }
     var dataState: BehaviorRelay<HomeViewDataState> { get }
     
     func initializeData() -> Disposable
@@ -20,4 +21,5 @@ protocol HomeViewModel {
     func numberOfSections() -> Int
     func numberOfRows() -> Int
     func dataModelForRow(forIndexPath indexPath: IndexPath) -> HomeViewCellType
+    func didSelectRow(atIndexPath indexPath: IndexPath)
 }

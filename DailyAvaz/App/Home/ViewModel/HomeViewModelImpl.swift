@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModelImpl: HomeViewModel {
+    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     var dataState = BehaviorRelay(value: HomeViewDataState.loading)
+    let disposeBag = DisposeBag()
     
     private let apiCategoryChanged = BehaviorRelay(value: APICategory.najnovije)
     private var page = BehaviorRelay(value: 1)
@@ -25,6 +27,7 @@ class HomeViewModelImpl: HomeViewModel {
                 self.dataState.accept(.loading)
                 return APIManager.getNews(forCategory: category, articleCategory: .vijesti, forPage: page)
             })
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] news in
                 self.dataModels.removeAll(where: { $0 == .loader })
                 if self.page.value == 1 {
@@ -73,6 +76,28 @@ class HomeViewModelImpl: HomeViewModel {
     func dataModelForRow(forIndexPath indexPath: IndexPath) -> HomeViewCellType {
         return dataModels[indexPath.row]
     }
+    
+    func didSelectRow(atIndexPath indexPath: IndexPath) {
+        let articleIDs = dataModels.compactMap { homeViewCellType -> Int? in
+            switch homeViewCellType {
+            case .news(let data):
+                return data?.id
+            default:
+                return nil
+            }
+        }
+        let tappedDataModel = dataModels[indexPath.row]
+        switch tappedDataModel {
+        case .news(let data):
+            guard let id = data?.id,
+                let tappedArticleIndex = articleIDs.firstIndex(where: { $0 == id }) else {
+                return
+            }
+            homeCoordinatorDelegate?.articleTapped(articleIDs: articleIDs, tappedArticleIndex: tappedArticleIndex)
+        default:
+            break
+        }
+    }
 }
 
 private extension HomeViewModelImpl {
@@ -89,15 +114,16 @@ private extension HomeViewModelImpl {
                     return
             }
             let timeSinceRelease = DateConverter(date: article.publishedAt.date).message
-            let cellDataModel = NewsTableViewCell.DataModel(imageUrl: imageUrl,
+            let cellDataModel = NewsTableViewCell.DataModel(id: article.id,
+                                                            imageUrl: imageUrl,
                                                             category: article.category,
                                                             categoryBackgroundColor: categoryColour,
-                                                            hasGallery: true,
-                                                            hasVideo: true,
+                                                            hasGallery: article.hasGallery,
+                                                            hasVideo: article.hasVideo,
                                                             title: article.titleRaw,
                                                             subtitle: article.intro,
                                                             timeSinceRelease: timeSinceRelease,
-                                                            shares: 1)
+                                                            shares: article.shares)
             let dataModel = HomeViewCellType.news(cellDataModel)
             dataModels.append(dataModel)
         }

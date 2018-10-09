@@ -1,5 +1,5 @@
 //
-//  SingleImageTableViewCell.swift
+//  SingleCoverImageTableViewCell.swift
 //  DailyAvaz
 //
 //  Created by Matej Korman on 04/10/2018.

@@ -7,15 +7,32 @@
 //
 
 import UIKit
+import SnapKit
 
 class SingleView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let tableView = UITableView.autolayoutView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
+private extension SingleView {
+    func setupViews() {
+        //TDOD: Register cells
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(LoaderTableViewCell.self, forCellReuseIdentifier: LoaderTableViewCell.identifier)
+        tableView.register(SingleCoverImageTableViewCell.self, forCellReuseIdentifier: SingleCoverImageTableViewCell.identifier)
+        tableView.register(SingleTitlesTableViewCell.self, forCellReuseIdentifier: SingleTitlesTableViewCell.identifier)
+        tableView.register(SingleDetailsTableViewCell.self, forCellReuseIdentifier: SingleDetailsTableViewCell.identifier)
+        tableView.register(SingleTextTableViewCell.self, forCellReuseIdentifier: SingleTextTableViewCell.identifier)
+        addSubview(tableView)
+        tableView.snp.makeConstraints({ $0.edges.equalTo(safeAreaLayoutGuide) })
+    }
 }

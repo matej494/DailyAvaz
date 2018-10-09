@@ -34,6 +34,6 @@ private extension HomeView {
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
         tableView.register(LoaderTableViewCell.self, forCellReuseIdentifier: LoaderTableViewCell.identifier)
         addSubview(tableView)
-        tableView.snp.makeConstraints { $0.leading.top.trailing.bottom.equalTo(safeAreaLayoutGuide) }
+        tableView.snp.makeConstraints { $0.edges.equalTo(safeAreaLayoutGuide) }
     }
 }

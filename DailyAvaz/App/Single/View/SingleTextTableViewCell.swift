@@ -7,18 +7,51 @@
 //
 
 import UIKit
+import SnapKit
 
 class SingleTextTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let identifier = "SingleTextTableViewCell"
+    
+    struct DataModel {
+        let text: NSAttributedString
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private let textField = UILabel.autolayoutView()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
+extension SingleTextTableViewCell {
+    func updateProperties(dataModel: DataModel) {
+        let text = NSMutableAttributedString(attributedString: dataModel.text)
+        let range = NSRange(location: 0, length: text.length)
+        if let font = UIFont.custom(type: Roboto.regular, ofSize: 14) {
+            text.addAttributes([.font: font], range: range)
+        }
+        text.addAttributes([.foregroundColor: UIColor.black.withAlphaComponent(0.6)], range: range)
+        textField.attributedText = text
+    }
+}
+
+private extension SingleTextTableViewCell {
+    func setupViews() {
+        selectionStyle = .none
+        setupTextField()
+    }
+    
+    func setupTextField() {
+        textField.font = .custom(type: Roboto.regular, ofSize: 14)
+        textField.textColor = UIColor.black.withAlphaComponent(0.6)
+        textField.numberOfLines = 0
+        textField.lineBreakMode = .byWordWrapping
+        contentView.addSubview(textField)
+        textField.snp.makeConstraints { $0.edges.equalToSuperview().inset(16) }
+    }
 }

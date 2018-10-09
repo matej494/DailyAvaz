@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APINews: Codable {
+struct ApiNews: Codable {
     let articles: [News]
 }
 
@@ -26,14 +26,4 @@ struct News: Codable {
     let publishedAt: PublishedAt
     let featuredImage: FeaturedImage
     let author: String
-    
-    struct PublishedAt: Codable {
-        let date: Date
-        let timezoneType: Int
-        let timezone: String
-    }
-    
-    struct FeaturedImage: Codable {
-        let original: String
-    }
 }

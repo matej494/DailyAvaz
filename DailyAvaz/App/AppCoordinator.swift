@@ -9,9 +9,10 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-    let window: UIWindow
     var childCoordinators = [Coordinator]()
     var presenter: UINavigationController
+    
+    private let window: UIWindow
 
     init(window: UIWindow) {
         self.window = window
@@ -24,5 +25,11 @@ class AppCoordinator: Coordinator {
         let homeCoordinator = HomeCoordinator(presenter: presenter)
         addChildCoordinator(childCoordinator: homeCoordinator)
         homeCoordinator.start()
+    }
+}
+
+extension AppCoordinator: ParentCoordinatorDelegate {
+    func childHasFinished(coordinator: Coordinator) {
+        removeChildCoordinator(childCoordinator: coordinator)
     }
 }

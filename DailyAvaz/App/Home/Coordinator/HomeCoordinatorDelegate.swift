@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol HomeCoordinatorDelegate: CoordinatorDelegate {
+    func articleTapped(articleIDs: [Int], tappedArticleIndex: Int)
+}

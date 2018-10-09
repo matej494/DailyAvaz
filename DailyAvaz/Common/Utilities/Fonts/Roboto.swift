@@ -10,4 +10,5 @@ import Foundation
 
 enum Roboto: String, CustomFont {
     case regular = "Roboto-Regular"
+    case medium = "Roboto-Medium"
 }

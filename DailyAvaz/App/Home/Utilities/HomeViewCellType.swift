@@ -15,6 +15,7 @@ enum HomeViewCellType {
 }
 
 extension HomeViewCellType: Equatable {
+    /** Compares only case, data within is ignored. */
     static func == (lhs: HomeViewCellType, rhs: HomeViewCellType) -> Bool {
         switch lhs {
         case .news:

@@ -14,6 +14,7 @@ class NewsTableViewCell: UITableViewCell {
     static let identifier = "NewsTableViewCell"
     
     struct DataModel {
+        let id: Int
         let imageUrl: URL
         let category: String
         let categoryBackgroundColor: UIColor

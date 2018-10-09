@@ -10,4 +10,5 @@ import Foundation
 
 enum RobotoSlab: String, CustomFont {
     case bold = "RobotoSlab-Bold"
+    case regular = "RobotoSlab-Regular"
 }

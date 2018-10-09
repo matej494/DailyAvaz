@@ -11,15 +11,25 @@ import UIKit
 class SingleCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var presenter: UINavigationController
+    weak var parentCoordinatorDelegate: ParentCoordinatorDelegate?
     
-    private var controller: UIViewController
+    private var controller: SingleViewController
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, articleIDs: [Int], selectedArticleIndex: Int) {
         self.presenter = presenter
-        controller = UIViewController()
+        let viewModel = SingleViewModelImpl(articleIDs: articleIDs, selectedArticleIndex: selectedArticleIndex)
+        controller = SingleViewController(viewModel: viewModel)
+        viewModel.singleCoordinatorDelegate = self
     }
     
     func start() {
         presenter.pushViewController(controller, animated: true)
+    }
+}
+
+extension SingleCoordinator: SingleCoordinatorDelegate {
+    func viewControllerHasFinished() {
+        childCoordinators.removeAll()
+        parentCoordinatorDelegate?.childHasFinished(coordinator: self)
     }
 }

@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+protocol SingleCoordinatorDelegate: CoordinatorDelegate {
+}

@@ -17,6 +17,7 @@ enum HomeViewDataState {
 }
 
 extension HomeViewDataState: Equatable {
+    /** Compares only case, data within is ignored. */
     static func == (lhs: HomeViewDataState, rhs: HomeViewDataState) -> Bool {
         switch lhs {
         case .initialized:

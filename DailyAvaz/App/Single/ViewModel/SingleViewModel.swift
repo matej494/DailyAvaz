@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+protocol SingleViewModel {
+    var singleCoordinatorDelegate: SingleCoordinatorDelegate? { get set }
+    var dataState: BehaviorRelay<SingleViewController.DataState> { get }
+    
+    func initializeData() -> Disposable
+    func numberOfSections() -> Int
+    func numberOfRows() -> Int
+    func dataModelForRow(forIndexPath indexPath: IndexPath) -> SingleViewCellType
+}

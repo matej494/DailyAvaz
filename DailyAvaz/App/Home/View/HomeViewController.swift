@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController {    
     private let disposeBag = DisposeBag()
     private let viewModel: HomeViewModel
     private let homeView = HomeView.autolayoutView()
@@ -31,6 +31,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setupNavigationBar()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if isMovingFromParent {
+            viewModel.homeCoordinatorDelegate?.viewControllerHasFinished()
+        }
     }
 }
 
@@ -80,6 +87,10 @@ extension HomeViewController: UITableViewDelegate {
             viewModel.nextPage()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(atIndexPath: indexPath)
+    }
 }
 
 extension HomeViewController: TabBarDelegate {
@@ -117,6 +128,7 @@ private extension HomeViewController {
     
     func setupObservers() {
         viewModel.dataState
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] viewControllerState in
                 self.stateChanged(state: viewControllerState)
             })
