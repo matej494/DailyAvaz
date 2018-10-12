@@ -90,6 +90,7 @@ struct APIManager {
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         let article = try decoder.decode(Article.self, from: data)
+                        print(article)
                         emitter.onNext(article)
                         emitter.onCompleted()
                     } catch {

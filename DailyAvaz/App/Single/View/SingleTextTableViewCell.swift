@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class SingleTextTableViewCell: UITableViewCell {
-    static let identifier = "SingleTextTableViewCell"
+    static let identifier = String(describing: SingleTextTableViewCell.self)
     
     struct DataModel {
         let text: NSAttributedString

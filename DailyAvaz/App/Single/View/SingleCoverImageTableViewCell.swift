@@ -13,7 +13,7 @@ import Kingfisher
 class SingleCoverImageTableViewCell: UITableViewCell {
     let gradientLayer = CAGradientLayer()
 
-    static let identifier = "SingleImageTableViewCell"
+    static let identifier = String(describing: SingleCoverImageTableViewCell.self)
     
     struct DataModel {
         let imageUrl: URL
@@ -145,7 +145,7 @@ private extension SingleCoverImageTableViewCell {
     
     func setupBookmarkImageView() {
         bookmarkImageView.image = UIImage(named: "bookmark")
-        bookmarkImageView.clipsToBounds = true
+        bookmarkImageView.clipsToBounds = false
         bookmarkImageView.contentMode = .scaleAspectFill
         categoryAndBookmarkView.addSubview(bookmarkImageView)
         bookmarkImageView.snp.makeConstraints {

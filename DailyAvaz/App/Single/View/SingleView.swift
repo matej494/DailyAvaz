@@ -32,6 +32,7 @@ private extension SingleView {
         tableView.register(SingleTitlesTableViewCell.self, forCellReuseIdentifier: SingleTitlesTableViewCell.identifier)
         tableView.register(SingleDetailsTableViewCell.self, forCellReuseIdentifier: SingleDetailsTableViewCell.identifier)
         tableView.register(SingleTextTableViewCell.self, forCellReuseIdentifier: SingleTextTableViewCell.identifier)
+        tableView.register(SingleImageTableViewCell.self, forCellReuseIdentifier: SingleImageTableViewCell.identifier)
         addSubview(tableView)
         tableView.snp.makeConstraints({ $0.edges.equalTo(safeAreaLayoutGuide) })
     }

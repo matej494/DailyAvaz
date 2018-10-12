@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class TabBarTableViewCell: UITableViewCell {
-    static let identifier = "TabBarTableViewCell"
+    static let identifier = String(describing: TabBarTableViewCell.self)
     
     weak var delegate: TabBarDelegate?
     

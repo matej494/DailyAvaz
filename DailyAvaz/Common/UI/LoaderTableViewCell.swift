@@ -9,7 +9,7 @@
 import UIKit
 
 class LoaderTableViewCell: UITableViewCell {
-    static let identifier = "LoaderTableViewCell"
+    static let identifier = String(describing: LoaderTableViewCell.self)
     
     private let activityIndicatorView = UIActivityIndicatorView.autolayoutView()
     

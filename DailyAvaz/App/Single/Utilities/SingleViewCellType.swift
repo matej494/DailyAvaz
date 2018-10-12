@@ -14,6 +14,7 @@ enum SingleViewCellType {
     case title(SingleTitlesTableViewCell.DataModel)
     case details(SingleDetailsTableViewCell.DataModel)
     case text(SingleTextTableViewCell.DataModel)
+    case image(SingleImageTableViewCell.DataModel)
 }
 
 extension SingleViewCellType: Equatable {
@@ -50,6 +51,13 @@ extension SingleViewCellType: Equatable {
         case .text:
             switch rhs {
             case .text:
+                return true
+            default:
+                return false
+            }
+        case .image:
+            switch rhs {
+            case .image:
                 return true
             default:
                 return false

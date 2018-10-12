@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SnapKit
 
 class SingleDetailsTableViewCell: UITableViewCell {
-    static let identifier = "SingleDetailsTableViewCell"
+    static let identifier = String(describing: SingleDetailsTableViewCell.self)
     
     struct DataModel {
         let releaseDate: String

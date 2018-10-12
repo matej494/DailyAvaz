@@ -89,6 +89,12 @@ extension SingleViewController: UITableViewDataSource {
             }
             cell.updateProperties(dataModel: data)
             return cell
+        case .image(let data):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SingleImageTableViewCell.identifier, for: indexPath) as? SingleImageTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.updateProperties(dataModel: data)
+            return cell
         }
     }
 }

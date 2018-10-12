@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SeparatorView: UIView {
     override init(frame: CGRect) {

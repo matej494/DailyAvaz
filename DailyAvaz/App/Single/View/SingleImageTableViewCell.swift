@@ -7,18 +7,52 @@
 //
 
 import UIKit
+import SnapKit
 
 class SingleImageTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let identifier = String(describing: SingleImageTableViewCell.self)
+    
+    struct DataModel {
+        let imageUrl: URL
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private let contentImageView = UIImageView.autolayoutView()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
+extension SingleImageTableViewCell {
+    func updateProperties(dataModel: DataModel) {
+        contentImageView.kf.setImage(with: dataModel.imageUrl)
+        if let imageSize = contentImageView.image?.size {
+            let imageRatio = Float(imageSize.height) / Float(imageSize.width)
+            contentImageView.snp.remakeConstraints {
+                $0.edges.equalToSuperview()
+                $0.height.equalTo(contentImageView.snp.width).multipliedBy(imageRatio).priority(.high)
+            }
+        }
+        layoutIfNeeded()
+    }
+}
+
+private extension SingleImageTableViewCell {
+    func setupViews() {
+        setupContentImageView()
+    }
+    
+    func setupContentImageView() {
+        contentImageView.contentMode = .scaleAspectFit
+        contentImageView.kf.indicatorType = .activity
+        contentView.addSubview(contentImageView)
+        contentImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }

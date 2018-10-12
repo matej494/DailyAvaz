@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D243BD38645607C3B27724E6 /* Pods_DailyAvazTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6DB19BF0278F9B7C84B7F58 /* Pods_DailyAvazTests.framework */; };
 		E2EB9869023006389E2757EE /* Pods_DailyAvaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D456C950EF284464E57DD3 /* Pods_DailyAvaz.framework */; };
 		F506710B21662C0000DF8C67 /* SingleCoverImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506710A21662C0000DF8C67 /* SingleCoverImageTableViewCell.swift */; };
 		F506710E21663DD300DF8C67 /* SingleViewCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506710D21663DD300DF8C67 /* SingleViewCellType.swift */; };
@@ -61,6 +62,9 @@
 		F5357488216355900045D969 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5357487216355900045D969 /* TabBarDelegate.swift */; };
 		F545A4A1215A45FA0050C4F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */; };
 		F545A4A8215A45FD0050C4F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F545A4A7215A45FD0050C4F0 /* Assets.xcassets */; };
+		F5ADA5902170887200D0DB4B /* DailyAvazTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADA58F2170887200D0DB4B /* DailyAvazTests.swift */; };
+		F5ADA59921708B0D00D0DB4B /* SingleViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ADA59821708B0D00D0DB4B /* SingleViewModelUnitTest.swift */; };
+		F5C325C5216CA71000138571 /* SingleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C325C4216CA71000138571 /* SingleImageTableViewCell.swift */; };
 		F5C3EAB9216362AE00DB6B3F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3EAB8216362AE00DB6B3F /* DateConverter.swift */; };
 		F5C3EABB2163826300DB6B3F /* TabBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3EABA2163826300DB6B3F /* TabBarTableViewCell.swift */; };
 		F5E456692164D7FB00408432 /* HomeViewCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E456682164D7FB00408432 /* HomeViewCellType.swift */; };
@@ -95,10 +99,23 @@
 		F5FF87D4216790D500BB4179 /* String-DailyAvaz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FF87D3216790D500BB4179 /* String-DailyAvaz.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F5ADA5922170887200D0DB4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F545A495215A45FA0050C4F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F545A49C215A45FA0050C4F0;
+			remoteInfo = DailyAvaz;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2B710B5DC461AAA957A7F699 /* Pods-DailyAvazTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAvazTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAvazTests/Pods-DailyAvazTests.release.xcconfig"; sourceTree = "<group>"; };
+		34E2D89508BDEDD05FB6B39F /* Pods-DailyAvazTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAvazTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAvazTests/Pods-DailyAvazTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4817E31DEE0102DBFDA7481A /* Pods-DailyAvaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAvaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAvaz/Pods-DailyAvaz.release.xcconfig"; sourceTree = "<group>"; };
 		53D456C950EF284464E57DD3 /* Pods_DailyAvaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyAvaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5E570894E78CD706DDAA398 /* Pods-DailyAvaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyAvaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyAvaz/Pods-DailyAvaz.debug.xcconfig"; sourceTree = "<group>"; };
+		E6DB19BF0278F9B7C84B7F58 /* Pods_DailyAvazTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyAvazTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506710A21662C0000DF8C67 /* SingleCoverImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCoverImageTableViewCell.swift; sourceTree = "<group>"; };
 		F506710D21663DD300DF8C67 /* SingleViewCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewCellType.swift; sourceTree = "<group>"; };
 		F510E9DC2161E7980072A0AA /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
@@ -156,6 +173,11 @@
 		F545A4A0215A45FA0050C4F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F545A4A7215A45FD0050C4F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F545A4AC215A45FD0050C4F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5ADA58D2170887200D0DB4B /* DailyAvazTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyAvazTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5ADA58F2170887200D0DB4B /* DailyAvazTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAvazTests.swift; sourceTree = "<group>"; };
+		F5ADA5912170887200D0DB4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5ADA59821708B0D00D0DB4B /* SingleViewModelUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewModelUnitTest.swift; sourceTree = "<group>"; };
+		F5C325C4216CA71000138571 /* SingleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewCell.swift; sourceTree = "<group>"; };
 		F5C3EAB8216362AE00DB6B3F /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		F5C3EABA2163826300DB6B3F /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
 		F5E456682164D7FB00408432 /* HomeViewCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellType.swift; sourceTree = "<group>"; };
@@ -199,6 +221,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5ADA58A2170887200D0DB4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D243BD38645607C3B27724E6 /* Pods_DailyAvazTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -206,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				53D456C950EF284464E57DD3 /* Pods_DailyAvaz.framework */,
+				E6DB19BF0278F9B7C84B7F58 /* Pods_DailyAvazTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +246,8 @@
 			children = (
 				C5E570894E78CD706DDAA398 /* Pods-DailyAvaz.debug.xcconfig */,
 				4817E31DEE0102DBFDA7481A /* Pods-DailyAvaz.release.xcconfig */,
+				34E2D89508BDEDD05FB6B39F /* Pods-DailyAvazTests.debug.xcconfig */,
+				2B710B5DC461AAA957A7F699 /* Pods-DailyAvazTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -327,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				F545A49F215A45FA0050C4F0 /* DailyAvaz */,
+				F5ADA58E2170887200D0DB4B /* DailyAvazTests */,
 				F545A49E215A45FA0050C4F0 /* Products */,
 				D1B9EC42396D53DA09B53495 /* Pods */,
 				92F38C77003D21CED59BCC18 /* Frameworks */,
@@ -337,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				F545A49D215A45FA0050C4F0 /* DailyAvaz.app */,
+				F5ADA58D2170887200D0DB4B /* DailyAvazTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,6 +396,24 @@
 				F5E456702166022E00408432 /* Single */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		F5ADA58E2170887200D0DB4B /* DailyAvazTests */ = {
+			isa = PBXGroup;
+			children = (
+				F5ADA5972170894900D0DB4B /* Single */,
+				F5ADA58F2170887200D0DB4B /* DailyAvazTests.swift */,
+				F5ADA5912170887200D0DB4B /* Info.plist */,
+			);
+			path = DailyAvazTests;
+			sourceTree = "<group>";
+		};
+		F5ADA5972170894900D0DB4B /* Single */ = {
+			isa = PBXGroup;
+			children = (
+				F5ADA59821708B0D00D0DB4B /* SingleViewModelUnitTest.swift */,
+			);
+			path = Single;
 			sourceTree = "<group>";
 		};
 		F5C325C3216CA04D00138571 /* UI */ = {
@@ -401,6 +454,7 @@
 				F5FF87CD2167633200BB4179 /* SeparatorView.swift */,
 				F5FF87CF21676B0000BB4179 /* SingleDetailsTableViewCell.swift */,
 				F5FF87D121678B0800BB4179 /* SingleTextTableViewCell.swift */,
+				F5C325C4216CA71000138571 /* SingleImageTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -520,7 +574,7 @@
 				F545A49A215A45FA0050C4F0 /* Frameworks */,
 				F545A49B215A45FA0050C4F0 /* Resources */,
 				64E0710D2CBD987D02F868EA /* [CP] Embed Pods Frameworks */,
-				F53574832162347E0045D969 /* ShellScript */,
+				F5ADA59A21708F4F00D0DB4B /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -530,6 +584,27 @@
 			productName = DailyAvaz;
 			productReference = F545A49D215A45FA0050C4F0 /* DailyAvaz.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F5ADA58C2170887200D0DB4B /* DailyAvazTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5ADA5962170887200D0DB4B /* Build configuration list for PBXNativeTarget "DailyAvazTests" */;
+			buildPhases = (
+				0FC0D756F85929C2EFBD5333 /* [CP] Check Pods Manifest.lock */,
+				F5ADA5892170887200D0DB4B /* Sources */,
+				F5ADA58A2170887200D0DB4B /* Frameworks */,
+				F5ADA59B2170901000D0DB4B /* Cuckoo Mocks */,
+				F5ADA58B2170887200D0DB4B /* Resources */,
+				B084B018A916CAF13B5A95A1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5ADA5932170887200D0DB4B /* PBXTargetDependency */,
+			);
+			name = DailyAvazTests;
+			productName = DailyAvazTests;
+			productReference = F5ADA58D2170887200D0DB4B /* DailyAvazTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -543,6 +618,10 @@
 				TargetAttributes = {
 					F545A49C215A45FA0050C4F0 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					F5ADA58C2170887200D0DB4B = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = F545A49C215A45FA0050C4F0;
 					};
 				};
 			};
@@ -560,6 +639,7 @@
 			projectRoot = "";
 			targets = (
 				F545A49C215A45FA0050C4F0 /* DailyAvaz */,
+				F5ADA58C2170887200D0DB4B /* DailyAvazTests */,
 			);
 		};
 /* End PBXProject section */
@@ -615,9 +695,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5ADA58B2170887200D0DB4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0FC0D756F85929C2EFBD5333 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyAvazTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		64E0710D2CBD987D02F868EA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -662,7 +767,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F53574832162347E0045D969 /* ShellScript */ = {
+		B084B018A916CAF13B5A95A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DailyAvazTests/Pods-DailyAvazTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DailyAvazTests/Pods-DailyAvazTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5ADA59A21708F4F00D0DB4B /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -671,6 +812,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Swift Lint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -678,6 +820,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		F5ADA59B2170901000D0DB4B /* Cuckoo Mocks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Cuckoo Mocks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -695,6 +855,7 @@
 				F5E4567B2166039800408432 /* SingleViewModel.swift in Sources */,
 				F52C70E22161EFE0006805AE /* RobotoSlab.swift in Sources */,
 				F5E456762166034600408432 /* SingleViewController.swift in Sources */,
+				F5C325C5216CA71000138571 /* SingleImageTableViewCell.swift in Sources */,
 				F5FCEE7B215B85EE00079A09 /* HomeCoordinator.swift in Sources */,
 				F5E456782166035900408432 /* SingleView.swift in Sources */,
 				F506710E21663DD300DF8C67 /* SingleViewCellType.swift in Sources */,
@@ -731,7 +892,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5ADA5892170887200D0DB4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5ADA59921708B0D00D0DB4B /* SingleViewModelUnitTest.swift in Sources */,
+				F5ADA5902170887200D0DB4B /* DailyAvazTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5ADA5932170887200D0DB4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F545A49C215A45FA0050C4F0 /* DailyAvaz */;
+			targetProxy = F5ADA5922170887200D0DB4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F545A4AD215A45FD0050C4F0 /* Debug */ = {
@@ -888,6 +1066,48 @@
 			};
 			name = Release;
 		};
+		F5ADA5942170887200D0DB4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E2D89508BDEDD05FB6B39F /* Pods-DailyAvazTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV38R3X63U;
+				INFOPLIST_FILE = DailyAvazTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.DailyAvazTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyAvaz.app/DailyAvaz";
+			};
+			name = Debug;
+		};
+		F5ADA5952170887200D0DB4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B710B5DC461AAA957A7F699 /* Pods-DailyAvazTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NV38R3X63U;
+				INFOPLIST_FILE = DailyAvazTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.DailyAvazTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyAvaz.app/DailyAvaz";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -905,6 +1125,15 @@
 			buildConfigurations = (
 				F545A4B0215A45FD0050C4F0 /* Debug */,
 				F545A4B1215A45FD0050C4F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5ADA5962170887200D0DB4B /* Build configuration list for PBXNativeTarget "DailyAvazTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5ADA5942170887200D0DB4B /* Debug */,
+				F5ADA5952170887200D0DB4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

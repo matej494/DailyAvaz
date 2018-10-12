@@ -53,10 +53,10 @@ private extension SingleViewModelImpl {
                 return
         }
         let imageDataModel = SingleCoverImageTableViewCell.DataModel(imageUrl: imageUrl,
-                                                                category: article.category,
-                                                                categoryColor: categoryColor,
-                                                                source: article.featuredImageSource,
-                                                                caption: article.featuredImageCaption)
+                                                                     category: article.category,
+                                                                     categoryColor: categoryColor,
+                                                                     source: article.featuredImageSource,
+                                                                     caption: article.featuredImageCaption)
         self.dataModels.append(SingleViewCellType.coverImage(imageDataModel))
         let titleDataModel = SingleTitlesTableViewCell.DataModel(upperTitle: article.uppertitle,
                                                                  title: article.titleRaw,
@@ -71,16 +71,19 @@ private extension SingleViewModelImpl {
                                                                     author: article.author,
                                                                     shares: "\(article.shares)")
         self.dataModels.append(SingleViewCellType.details(detailsDataModel))
-        var texts = [NSAttributedString]()
-        article.content.forEach { content in
+        article.content.forEach { [unowned self] content in
             if content.type == "text" {
                 guard let text = content.data.html2Attributed else { return }
-                texts.append(text)
+                let textDataModel = SingleTextTableViewCell.DataModel(text: text)
+                self.dataModels.append(SingleViewCellType.text(textDataModel))
+            } else if content.type == "image" {
+                guard let image = content.image,
+                    let imageUrl = URL(string: "https://avaz.ba")?.appendingPathComponent(image.original) else {
+                        return
+                }
+                let dataModel = SingleImageTableViewCell.DataModel(imageUrl: imageUrl)
+                self.dataModels.append(SingleViewCellType.image(dataModel))
             }
-        }
-        texts.forEach { text in
-            let textDataModel = SingleTextTableViewCell.DataModel(text: text)
-            self.dataModels.append(SingleViewCellType.text(textDataModel))
         }
         self.dataState.accept(.ready)
     }

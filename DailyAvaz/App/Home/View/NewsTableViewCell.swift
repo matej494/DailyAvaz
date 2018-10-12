@@ -11,7 +11,7 @@ import SnapKit
 import Kingfisher
 
 class NewsTableViewCell: UITableViewCell {
-    static let identifier = "NewsTableViewCell"
+    static let identifier = String(describing: NewsTableViewCell.self)
     
     struct DataModel {
         let id: Int
